@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
 
-const lifestyleImg = 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&q=80&w=1000';
+const lifestyleImg = '/products/product-4.jpeg';
 
 export const Home: React.FC = () => {
   const { addToCart } = useCart();
