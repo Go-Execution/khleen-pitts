@@ -50,6 +50,8 @@ img { max-width: 100%; display: block; }
 .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
 .section-header h2 { font-size: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin: 0; }
 .btn-outline { background: transparent; border: 1px solid var(--gray); color: var(--text-primary); padding: 8px 20px; font-size: 10px; border-radius: 30px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.btn-primary { background: var(--black); color: var(--white); padding: 16px 32px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 40px; transition: background-color 0.2s, transform 0.2s; display: inline-block; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+.btn-primary:hover { background: var(--text-secondary); transform: scale(1.02); }
 
 .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: white; }
 .product-card { background: var(--light-gray); padding: 60px 40px; text-align: center; position: relative; display: flex; flex-direction: column; align-items: center; }
@@ -157,4 +159,102 @@ img { max-width: 100%; display: block; }
 @keyframes slideDown {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+/* Slider Section */
+.slider-section {
+  padding: 80px 0;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--gray);
+}
+.slider-section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.slider-section.reverse .slider-section-grid {
+  /* On desktop, reversing is handled by the order in the React component if needed, 
+     or we can use flex-direction. But since we conditionally render the order in JSX, 
+     we just leave grid as is, or adjust for mobile. */
+}
+.slider-section-content {
+  padding: 40px;
+}
+.slider-section-content h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.slider-section-content p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+.slider-section-images {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--light-gray);
+}
+.slider-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.slider-image.active {
+  opacity: 1;
+}
+.slider-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 10;
+}
+.slider-controls button {
+  background: var(--white);
+  border: 1px solid var(--black);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.slider-controls button:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+@media (max-width: 768px) {
+  .slider-section {
+    padding: 40px 0;
+  }
+  .slider-section-grid {
+    display: flex;
+    flex-direction: column-reverse; /* Default for imagePosition="right" where text is first in DOM */
+    gap: 30px;
+  }
+  .slider-section-content {
+    padding: 0 20px;
+    text-align: center;
+  }
+  .slider-section-content h2 {
+    font-size: 26px;
+  }
+  .slider-section.reverse .slider-section-grid {
+    flex-direction: column; /* For imagePosition="left" where image is first in DOM */
+  }
 }

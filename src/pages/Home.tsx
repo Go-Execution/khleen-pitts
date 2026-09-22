@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
+import { SliderSection } from '../components/SliderSection';
 
 const lifestyleImg = '/products/product-4.jpeg';
 
@@ -43,55 +44,33 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Split Section */}
-      <section className="split-section" id="difference">
-        <img src={lifestyleImg} alt="Lifestyle" className="split-img" />
-        <div className="split-content">
-          <h2 style={{ fontSize: '36px', fontStyle: 'italic', fontFamily: 'serif', margin: '0 0 30px' }}>
-            Natural doesn't have to mean compromising on performance.
-          </h2>
-          <p style={{ color: 'var(--text-secondary)', marginBottom: '40px' }}>
-            YONI LOSOPHY was created for active and health-conscious individuals who seek chemical-free and vegan products. Our formula is thoughtfully made without bicarbonate of soda, using Magnesium Hydroxide as the active odour-fighting ingredient.
-          </p>
-          <div>
-            <button className="btn-outline" style={{ borderColor: 'black' }}>Learn More</button>
-          </div>
-        </div>
-      </section>
+      {/* Oil Collection Slider */}
+      <SliderSection 
+        title="Pure & Natural Oils"
+        text="Discover our signature collection of botanical oils, formulated to nourish, balance, and restore your natural harmony. Hand-crafted with 100% vegan ingredients."
+        buttonText="View all oil collection"
+        link="/shop?category=Oil"
+        images={[
+          '/products/yoni-oil.jpg',
+          '/products/yoni-oil-2.jpg',
+          '/products/yoni-oil-3.jpg'
+        ]}
+        imagePosition="right"
+      />
 
-      {/* Scents / Trial Kits Section */}
-      <section className="scents-section" id="ingredients">
-        <div className="container">
-          <div className="section-header">
-            <h2>Discover Your Favourites</h2>
-            <Link to="/shop" className="btn-outline">Shop Trial Kits</Link>
-          </div>
-          <div className="scents-grid">
-            {products.slice(0, 5).map(product => (
-              <div key={product.id}>
-                <Link to={`/product/${product.id}`}>
-                  <img src={product.image} alt={product.name} />
-                </Link>
-                <p style={{ textAlign: 'center', fontSize: '11px', textTransform: 'uppercase', marginTop: '20px', letterSpacing: '1px' }}>{product.name.split(' ')[0]}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Formats / Transition Guide */}
-      <section className="gift-sets" id="faq">
-        <div className="gift-split">
-          <div style={{ padding: '80px 10%' }}>
-            <h2 style={{ fontSize: '32px', textTransform: 'uppercase', fontWeight: 800, marginBottom: '20px' }}>Making the switch?</h2>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '40px' }}>
-              Introduce natural deodorant into your daily routine. Your underarms may experience an adjustment period when changing from conventional antiperspirant. Start with clean, dry skin and give yourself a little patience as you discover your best routine.
-            </p>
-            <button className="btn-outline" style={{ borderColor: 'black' }}>Read Transition Guide</button>
-          </div>
-          <img src={lifestyleImg} alt="Transition" style={{ height: '500px' }} />
-        </div>
-      </section>
+      {/* Bundle Collection Slider */}
+      <SliderSection 
+        title="Complete Wellness Bundles"
+        text="Experience the ultimate self-care routine with our curated bundles. Everything you need for a comprehensive, chemical-free personal care ritual."
+        buttonText="View all bundle collection"
+        link="/shop?category=Bundle"
+        images={[
+          '/products/complete-bundle.jpg',
+          '/products/bundle-2.jpg',
+          '/products/bundle-3.jpg'
+        ]}
+        imagePosition="left"
+      />
     </main>
   );
 };
