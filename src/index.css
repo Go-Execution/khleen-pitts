@@ -82,8 +82,10 @@ img { max-width: 100%; display: block; }
 .footer-links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 12px; }
 .footer-links h4 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 20px; color: var(--text-secondary); }
 .footer-links a { display: block; font-size: 10px; color: var(--text-primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-.footer-brand { width: 100%; overflow: hidden; display: flex; justify-content: center; border-top: 1px solid var(--gray); padding-top: 40px; }
-.footer-brand h1 { font-size: 14vw; font-weight: 800; line-height: 0.75; letter-spacing: -0.02em; margin: 0; color: var(--text-primary); white-space: nowrap; }
+.footer-brand { width: 100%; overflow: hidden; display: flex; border-top: 1px solid var(--gray); padding-top: 40px; }
+.marquee { display: flex; width: 100%; }
+.marquee span { display: inline-block; font-size: 14vw; font-weight: 800; line-height: 0.75; letter-spacing: -0.02em; margin: 0; color: var(--text-primary); white-space: nowrap; animation: scroll 20s linear infinite; padding-right: 4vw; }
+@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
 /* Cart Sidebar */
 .cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 100; opacity: 1; transition: opacity 0.3s; }
@@ -140,7 +142,7 @@ img { max-width: 100%; display: block; }
 @media (max-width: 600px) {
   .hero h1 { font-size: 32px; }
   .footer-links { grid-template-columns: 1fr; }
-  .footer-brand h1 { font-size: 20vw; }
+  .marquee span { font-size: 20vw; }
   .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; }
   
   .section-padding { padding: 60px 0; }

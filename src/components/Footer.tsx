@@ -35,7 +35,10 @@ export const Footer: React.FC = () => {
         </div>
       </div>
       <div className="footer-brand">
-        <h1>YONI LOSOPHY</h1>
+        <div className="marquee">
+          <span>YONI LOSOPHY — YONI LOSOPHY — YONI LOSOPHY — YONI LOSOPHY — </span>
+          <span>YONI LOSOPHY — YONI LOSOPHY — YONI LOSOPHY — YONI LOSOPHY — </span>
+        </div>
       </div>
     </footer>
   );
