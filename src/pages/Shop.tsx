@@ -12,6 +12,8 @@ export const Shop: React.FC = () => {
   
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
 
+  const [sortBy, setSortBy] = useState('featured');
+
   const categories = ['All', ...Array.from(new Set(products.map(p => p.category)))];
 
   const handleCategoryClick = (cat: string) => {
@@ -25,13 +27,25 @@ export const Shop: React.FC = () => {
   };
 
   const filteredProducts = useMemo(() => {
-    return products.filter(product => {
+    let result = products.filter(product => {
       const matchesCategory = selectedCategory === 'All' || product.category === selectedCategory;
       const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                             product.description.toLowerCase().includes(searchQuery.toLowerCase());
       return matchesCategory && matchesSearch;
     });
-  }, [selectedCategory, searchQuery]);
+
+    if (sortBy === 'price-low') {
+      result.sort((a, b) => a.price - b.price);
+    } else if (sortBy === 'price-high') {
+      result.sort((a, b) => b.price - a.price);
+    } else if (sortBy === 'name-a') {
+      result.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortBy === 'name-z') {
+      result.sort((a, b) => b.name.localeCompare(a.name));
+    }
+
+    return result;
+  }, [selectedCategory, searchQuery, sortBy]);
 
   return (
     <main className="container section-padding">
@@ -40,20 +54,37 @@ export const Shop: React.FC = () => {
           {searchQuery ? `Search Results for "${searchQuery}"` : 'Shop All'}
         </h1>
         
-        <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
-          {categories.map(cat => (
-            <button 
-              key={cat} 
-              onClick={() => handleCategoryClick(cat)}
-              className="btn-outline"
-              style={{
-                background: selectedCategory === cat ? 'var(--black)' : 'transparent',
-                color: selectedCategory === cat ? 'var(--white)' : 'var(--text-primary)'
-              }}
+        <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', flexWrap: 'wrap', gap: '20px' }}>
+          <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
+            {categories.map(cat => (
+              <button 
+                key={cat} 
+                onClick={() => handleCategoryClick(cat)}
+                className="btn-outline"
+                style={{
+                  background: selectedCategory === cat ? 'var(--black)' : 'transparent',
+                  color: selectedCategory === cat ? 'var(--white)' : 'var(--text-primary)'
+                }}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span style={{ fontSize: '14px', textTransform: 'uppercase', letterSpacing: '1px' }}>Sort By:</span>
+            <select 
+              value={sortBy} 
+              onChange={(e) => setSortBy(e.target.value)}
+              style={{ padding: '8px 16px', border: '1px solid var(--gray)', borderRadius: '30px', background: 'transparent' }}
             >
-              {cat}
-            </button>
-          ))}
+              <option value="featured">Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="name-a">Name: A to Z</option>
+              <option value="name-z">Name: Z to A</option>
+            </select>
+          </div>
         </div>
       </div>
       

@@ -61,7 +61,27 @@ export const ProductDetail: React.FC = () => {
             </div>
             
             <div className="product-accordion">
-              <div style={{ borderTop: '1px solid var(--gray)', borderBottom: openAccordion === 'ingredients' ? 'none' : '1px solid var(--gray)' }}>
+              <div style={{ borderTop: '1px solid var(--gray)', borderBottom: '1px solid var(--gray)' }}>
+                <button 
+                  onClick={() => toggleAccordion('benefits')}
+                  style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 0', background: 'none', border: 'none' }}
+                >
+                  <h4 style={{ textTransform: 'uppercase', letterSpacing: '1px', fontSize: '12px', margin: 0 }}>Benefits</h4>
+                  {openAccordion === 'benefits' ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                </button>
+                {openAccordion === 'benefits' && (
+                  <div style={{ paddingBottom: '20px', color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6 }}>
+                    <ul>
+                      <li style={{ marginBottom: '10px' }}>100% natural, chemical-free formulation</li>
+                      <li style={{ marginBottom: '10px' }}>Balances pH and supports natural flora</li>
+                      <li style={{ marginBottom: '10px' }}>Provides long-lasting 72-hour protection</li>
+                      <li style={{ marginBottom: '10px' }}>Soothes and moisturizes delicate skin</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+
+              <div style={{ borderBottom: openAccordion === 'ingredients' ? 'none' : '1px solid var(--gray)' }}>
                 <button 
                   onClick={() => toggleAccordion('ingredients')}
                   style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 0', background: 'none', border: 'none' }}

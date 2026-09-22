@@ -51,11 +51,12 @@ export const Home: React.FC = () => {
         buttonText="View all oil collection"
         link="/shop?category=Oil"
         images={[
-          '/products/yoni-oil.jpg',
-          '/products/yoni-oil-2.jpg',
-          '/products/yoni-oil-3.jpg'
+          '/products/oil-1.jpg',
+          '/products/oil-2.jpg',
+          '/products/oil-3.jpg'
         ]}
         imagePosition="right"
+        bgColor="#faf6f0"
       />
 
       {/* Bundle Collection Slider */}
@@ -65,11 +66,12 @@ export const Home: React.FC = () => {
         buttonText="View all bundle collection"
         link="/shop?category=Bundle"
         images={[
-          '/products/complete-bundle.jpg',
+          '/products/bundle-1.jpg',
           '/products/bundle-2.jpg',
           '/products/bundle-3.jpg'
         ]}
         imagePosition="left"
+        bgColor="var(--light-gray)"
       />
     </main>
   );

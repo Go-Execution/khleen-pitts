@@ -9,6 +9,7 @@ interface SliderSectionProps {
   link: string;
   images: string[];
   imagePosition?: 'left' | 'right';
+  bgColor?: string;
 }
 
 export const SliderSection: React.FC<SliderSectionProps> = ({
@@ -17,7 +18,8 @@ export const SliderSection: React.FC<SliderSectionProps> = ({
   buttonText,
   link,
   images,
-  imagePosition = 'right'
+  imagePosition = 'right',
+  bgColor = 'var(--white)'
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -67,7 +69,7 @@ export const SliderSection: React.FC<SliderSectionProps> = ({
   );
 
   return (
-    <section className={`slider-section ${imagePosition === 'left' ? 'reverse' : ''}`}>
+    <section className={`slider-section ${imagePosition === 'left' ? 'reverse' : ''}`} style={{ backgroundColor: bgColor }}>
       <div className="container">
         <div className="slider-section-grid">
           {imagePosition === 'left' ? (
