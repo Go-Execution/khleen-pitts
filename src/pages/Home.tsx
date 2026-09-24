@@ -51,9 +51,9 @@ export const Home: React.FC = () => {
         buttonText="View all oil collection"
         link="/shop?category=Oil"
         images={[
-          '/products/oil-1.jpg',
-          '/products/oil-2.jpg',
-          '/products/oil-3.jpg'
+          '/products/oil-1.png',
+          '/products/oil-2.png',
+          '/products/oil-3.png'
         ]}
         imagePosition="right"
         bgColor="#faf6f0"
@@ -66,9 +66,9 @@ export const Home: React.FC = () => {
         buttonText="View all bundle collection"
         link="/shop?category=Bundle"
         images={[
-          '/products/bundle-1.jpg',
-          '/products/bundle-2.jpg',
-          '/products/bundle-3.jpg'
+          '/products/bundle-1.png',
+          '/products/bundle-2.png',
+          '/products/bundle-3.png'
         ]}
         imagePosition="left"
         bgColor="var(--light-gray)"
