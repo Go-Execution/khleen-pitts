@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 const bgImages = [
   '/products/product-4.jpeg',
-  '/products/yoni-oil.jpg',
-  '/products/complete-bundle.jpg',
+  '/products/oil-1.png',
+  '/products/bundle-1.png',
   '/products/steam-seat-kit.jpg'
 ];
 
