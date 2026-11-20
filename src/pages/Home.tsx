@@ -14,10 +14,13 @@ export const Home: React.FC = () => {
     <main>
       {/* Hero Section */}
       <section className="hero">
+        <div className="hero-media">
+          <img src="/hero.jpg" alt="Yoni/Body — Freshness that cares for your skin" className="hero-image" />
+        </div>
         <div className="hero-content">
           <h1>Freshness<br/>that cares for your skin.</h1>
           <p>Advanced 72 Hour Protection • Magnesium Hydroxide • 100% Vegan</p>
-          <Link to="/shop" className="button" style={{ display: 'inline-block' }}>Shop Yoni Losophy</Link>
+          <Link to="/shop" className="button" style={{ display: 'inline-block' }}>Shop Yoni/Body</Link>
         </div>
       </section>
 
